@@ -30,7 +30,7 @@ public class Brick extends GCompound {
         hpl.setLabel("" + hitp);
         hpl.setColor(Color.white);
         add(hpl,x+hpl.getWidth()/2,y+hpl.getHeight());
-        if (randy.nextInt(4)==0){
+        if (randy.nextInt(3)==0){
             bricc.setFillColor(Color.green);
             powerup = true;
         }

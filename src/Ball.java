@@ -14,6 +14,10 @@ public class Ball extends GOval {
         this.screen = screen;
     }
 
+    public GCanvas getGCanvas(){
+        return this.screen;
+    }
+
     public void handleMove(){
         // move the ball
         move(deltaX, -deltaY);

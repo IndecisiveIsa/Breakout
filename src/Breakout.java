@@ -2,11 +2,10 @@ import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.program.GraphicsProgram;
 
-//test
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import svu.csc213.Dialog;
 
@@ -188,12 +187,33 @@ public class Breakout extends GraphicsProgram {
     }
 
     private void handlePowerup(){
-        int chance = randy.nextInt(2);
-        if (chance==0){
-            paddle.setSize(paddle.getWidth()*2,10);
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                int chance = randy.nextInt(1);
+                if (chance==0){
+                    double change = paddle.getWidth();
+                    paddle.setSize(paddle.getWidth()+change,10);
+                    try {
+                        Thread.currentThread().sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
 
-            paddle.setSize(paddle.getWidth()/2,10);
-        }
+                    }
+                    paddle.setSize(paddle.getWidth()-change,10);
+                }
+                if (chance==1){
+                    lives++;
+                }
+                if (chance==2){
+                    Ball aball = new Ball;
+                    aball = new Ball(getWidth()/2, 250, 10, aball.getGCanvas());
+                    add(aball);
+                    aball.handleMove();
+                }
+            }
+        });
+        t.start();
+
     }
 
 
