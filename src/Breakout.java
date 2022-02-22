@@ -189,7 +189,7 @@ public class Breakout extends GraphicsProgram {
     private void handlePowerup(){
         Thread t = new Thread(new Runnable() {
             public void run() {
-                int chance = randy.nextInt(1);
+                int chance = randy.nextInt(2);
                 if (chance==0){
                     double change = paddle.getWidth();
                     paddle.setSize(paddle.getWidth()+change,10);
@@ -203,12 +203,7 @@ public class Breakout extends GraphicsProgram {
                 }
                 if (chance==1){
                     lives++;
-                }
-                if (chance==2){
-                    Ball aball = new Ball;
-                    aball = new Ball(getWidth()/2, 250, 10, aball.getGCanvas());
-                    add(aball);
-                    aball.handleMove();
+                    lifeLabel.setLabel("lives left = "+String.valueOf(lives));
                 }
             }
         });
