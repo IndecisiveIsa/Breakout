@@ -5,7 +5,6 @@ import acm.program.GraphicsProgram;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import svu.csc213.Dialog;
 
